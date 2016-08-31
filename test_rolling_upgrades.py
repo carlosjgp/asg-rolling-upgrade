@@ -6,7 +6,7 @@ import pytest
 import botocore
 from paramiko import SSHClient
 
-from script import (
+from asg_rolling_upgrade import (
     RollingUpgradeManager,
     AwsManager,
     retry_if_throttled,
