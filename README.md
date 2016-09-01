@@ -40,6 +40,9 @@ Required arguments are:
 * --ssh_username: a username giving access to the instances
 * --ssh_private_key: a private key associated with the ssh_username
 * --limit: a string matching the beginning of the target auto scaling group name. This should resolve to a unique auto scaling group.
+
+Optional arguments are:
+
 * --sleep: time to wait (in seconds) between successive tests for completion (defaults to 30)
 * --max_wait_attempts: number of times to test for completion (defaults to 40)
 
