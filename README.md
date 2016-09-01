@@ -17,16 +17,15 @@ We could upgrade using a 3 - 4 - 3 - 4 - 3 - 4 - 3 pattern, but that has a hidde
 
 So the solution is to use CloudFormation to update the auto scaling group's instance configuration but not let it manage the rolling upgrade, and the handle the rolling upgrade ourselves.
 
-### How do I get set up? ###
 
-##### Installation #####
+#### Installation ####
 Clone this repository and ensure all the python dependencies by typing:
-`pip install -r require,emts.txt`
+`pip install -r requirements.txt`
 
-##### Summary of set up #####
+#### Summary of set up ####
 asg_rolling_upgrade.py is normally called directly from the command line, it can be called from a Contiunuous Deployment system, we use Thoughtworks GoCD. If you intend to use GoCD then ensure that Python and the module dependencies are installed on the Go Agent(s).
 
-##### Configuration #####
+#### Configuration ####
 Once installed, configuration is through command-line arguments and/or environment variables.
 The script uses environment variables for:
 
@@ -46,14 +45,18 @@ Optional arguments are:
 * --sleep: time to wait (in seconds) between successive tests for completion (defaults to 30)
 * --max_wait_attempts: number of times to test for completion (defaults to 40)
 
-##### Using the script #####
-The script should be run once CloudFormation has updated the Launch Configuration for the Auto Scaling Group. If instances need configuring to join a cluster this is handled through a separate CD pipeline triggered from the cloud-init mechanism.
+#### Using the script ####
+The script should be run once CloudFormation has updated the Launch Configuration for the Auto Scaling Group. 
+If instances need configuring to join a cluster this is handled through a separate CD pipeline triggered from the cloud-init mechanism.
 
-For example, assuming an auto scaling group for RabbitMq server instances requires a rolling update, then update the Launch Configuration for the auto scaling group with the updated AMI ID through CloudFormation. Once the Launch Configuration has been updated then running
+For example, an auto scaling group for RabbitMq server instances requires updating to use an upgraded AMI. This example assumes that the auto scaling group is called **SmokeTestRabbitMq***something*, that there is a bastion host called `bastion.smoketest.example.co.uk`, that the username for connecting to the instances is `centos` and the SSL private key for access is saved as `~/.ssh/example.pem`
+
+First update the Launch Configuration for the auto scaling group with the updated AMI ID through CloudFormation. 
+Once the Launch Configuration has been updated run the script like this.
 
 ```python asg_rolling_upgrade.py --ssh_tunnel bastion.smoketest.example.co.uk --ssh_username centos --ssh_private_key ~/.ssh/example.pem --limit SmokeTestRabbitMq```
 
-will
+this will
 
 * find the set of running instances in the auto scaling group with a name matching `SmokeTestRabbitMq*` (note the trailing wildcard)
 * identify the set of running instances with a launch configuration that does not match the current (updated) launch configuration
@@ -61,6 +64,9 @@ will
 * terminate that instance
 * wait until the instance is replaced
 * repeat until all instances have been replaced
+
+##### Note: Clustering #####
+The aws_rolling_upgrade script won't handle organising the instances in an auto scaling group into a cluster. Where instances are required to join a cluster that needs to be handled using a script or a CD pipeline which is triggered on first boot of an instance. We use a cloud-init script to call back to the GoCD server for this purpose.
 
 ### License ###
 MIT: http://crunch.mit-license.org/
