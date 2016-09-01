@@ -60,7 +60,7 @@ will
 * repeat until all instances have been replaced
 
 ### License ###
-<<<What license do we want to use for this?>>>
+MIT: http://crunch.mit-license.org/
 
 ### Reporting Bugs ###
 <<<How do we want this to happen once this is on Github?>>>
