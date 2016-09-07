@@ -71,5 +71,5 @@ The aws_rolling_upgrade script won't handle organising the instances in an auto 
 ### License ###
 MIT: http://crunch.mit-license.org/
 
-### Reporting Bugs ###
-<<<How do we want this to happen once this is on Github?>>>
+### Contributing ###
+If you want to contribute to this project then thank you, please go about it in the normal GitHub way and we will merge in the code.
