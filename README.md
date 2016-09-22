@@ -68,8 +68,5 @@ this will
 ##### Note: Clustering #####
 The aws_rolling_upgrade script won't handle organising the instances in an auto scaling group into a cluster. Where instances are required to join a cluster that needs to be handled using a script or a CD pipeline which is triggered on first boot of an instance. We use a cloud-init script to call back to the GoCD server for this purpose.
 
-### License ###
-MIT: http://crunch.mit-license.org/
-
 ### Contributing ###
 If you want to contribute to this project then thank you, please go about it in the normal GitHub way and we will merge in the code.
