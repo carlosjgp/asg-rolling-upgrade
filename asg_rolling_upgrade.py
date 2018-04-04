@@ -23,6 +23,7 @@ SshEnvConfig = namedtuple('SshEnvConfig', [
     'username',
     'private_key_file_path',
     'remote_port',
+    'environment',
     'use_bastion_tunnel'
 ])
 
