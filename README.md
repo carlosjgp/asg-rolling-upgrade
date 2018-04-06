@@ -49,7 +49,7 @@ Optional arguments are:
 The script should be run once CloudFormation has updated the Launch Configuration for the Auto Scaling Group. 
 If instances need configuring to join a cluster this is handled through a separate CD pipeline triggered from the cloud-init mechanism.
 
-For example, an auto scaling group for RabbitMq server instances requires updating to use an upgraded AMI. This example assumes that the auto scaling group is called **SmokeTestRabbitMq***something*, that there is a bastion host called `bastion.smoketest.example.co.uk`, that the username for connecting to the instances is `centos` and the SSL private key for access is saved as `~/.ssh/example.pem`
+For example, an auto scaling group for RabbitMq server instances requires updating to use an upgraded AMI. This example assumes that the auto scaling group is called **SmokeTestRabbitMq** *something*, that there is a bastion host called `bastion.smoketest.example.co.uk`, that the username for connecting to the instances is `centos` and the SSL private key for access is saved as `~/.ssh/example.pem`
 
 First update the Launch Configuration for the auto scaling group with the updated AMI ID through CloudFormation. 
 Once the Launch Configuration has been updated run the script like this.
