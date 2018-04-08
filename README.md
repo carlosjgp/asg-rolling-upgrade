@@ -1,3 +1,7 @@
+
+[![Travis](https://img.shields.io/travis/crunch/asg-rolling-upgrade.svg)](https://github.com/crunch-accounting/asg-rolling-upgrade)
+
+
 # README #
 
 Explicitly managing rolling upgrade of an AWS Auto Scaling Group
