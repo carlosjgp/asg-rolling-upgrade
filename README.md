@@ -1,5 +1,6 @@
 
-[![Travis](https://img.shields.io/travis/crunch/asg-rolling-upgrade.svg)](https://github.com/crunch-accounting/asg-rolling-upgrade)
+
+[![Travis](https://img.shields.io/travis/crunch-accounting/asg-rolling-upgrade.svg)](https://github.com/crunch-accounting/asg-rolling-upgrade)
 
 
 # README #
